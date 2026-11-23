@@ -1,0 +1,21 @@
+# 素材の出所
+
+- 絵（恐竜・木・小物・背景）: このゲームのために生成したオリジナルの絵
+- assets/tex/snow_02（色・法線）: Poly Haven / CC0 / https://polyhaven.com/textures
+- three.js（MIT）
+- snd/snowhit.mp3: File:Jump into Snow (Gravity Sound).mp3 / Gravity Sound / CC BY 4.0
+- snd/kids.mp3: File:Douzen kids on playground.ogg / stephan / Public domain
+- snd/wind_loop.wav: Wikimedia Commons「Howling wind」（CC0）
+- snd/j_good.mp3, j_bad.mp3: 85 Short music jingles / Kenney / CC0
+- snd/click.mp3: Interface Sounds / Kenney / CC0
+- snd/chime.mp3: Bell dings/chimes / PWL / CC0
+- snd/applause.mp3: Applause in a large hall or church / eXpl0it3r / CC0
+- snd/step1〜7.mp3: 4 dry snow steps / 9 wet snow steps / qubodup (Iwan Gabovitch) / CC0
+- snd/land1〜2.mp3, crack1〜2.mp3: 75 CC0 breaking / falling / hit sfx / rubberduck / CC0
+- snd/swish.mp3: Swishes Sound Pack / artisticdude / CC0
+- snd/cloth.mp3: 50 RPG sound effects / Kenney / CC0
+- snd/whistle.mp3（先頭1.15秒）: File:218318 splicesound referee-whistle-blow-gymnasium.wav / SpliceSound / CC0
+- snd/coin.mp3: Coin Drop / Vinrax / CC0
+- snd/bgm.mp3: Catch me if you can! / poinl / CC0
+- snd/swish3.mp3: Swishes Sound Pack / artisticdude / CC0
+- snd/swish6.mp3: Swishes Sound Pack / artisticdude / CC0

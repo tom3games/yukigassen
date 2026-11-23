@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+shots/
+art/prompts/
+art/raw/
+art/logs/
+_orig/
+tools/_dev/
+.DS_Store
