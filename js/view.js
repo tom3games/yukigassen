@@ -41,7 +41,8 @@ export function createView(canvas, o = {}) {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lowQ ? 2 : 2))
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.NeutralToneMapping; renderer.toneMappingExposure = 1.0
-  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  renderer.shadowMap.enabled = !lowQ;   // iPhone の Safari で影の地図が地面ごと暗くなった（2026-11-24 シミュレーターで確認）。スマホは丸い影だけ
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap
   const scene = new THREE.Scene()
   scene.background = new THREE.Color('#bcdcf6')
   scene.fog = new THREE.Fog('#dfeaf6', 26, 62)
@@ -151,9 +152,11 @@ export function createView(canvas, o = {}) {
   const wallMat = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 0.9, emissive: '#9fb8d8', emissiveIntensity: 0.12 })
   const MAXB = 160
   const bricks = new THREE.InstancedMesh(brickGeo, wallMat, MAXB); bricks.castShadow = true; bricks.receiveShadow = true; bricks.count = 0; scene.add(bricks)
+  const wallBlobs = []
   let walls = []   // { id, list:[{m:Matrix4, row}], shown }
   const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _v = new THREE.Vector3(), _s = new THREE.Vector3()
   function buildWalls(forts) {
+    for (const b of wallBlobs) scene.remove(b); wallBlobs.length = 0
     walls = []; let n = 0
     for (const f of forts) {
       const rows = 3, bh = 0.27, list = []
@@ -168,7 +171,8 @@ export function createView(canvas, o = {}) {
           list.push({ mat: new THREE.Matrix4().compose(_v.clone(), _q.clone(), _s.clone()), row: r, idx: n++, alive: true, x: _v.x, y: _v.y, z: _v.z })
         }
       }
-      walls.push({ id: f.id, f, list, shake: 0 })
+      const wb = mkBlob(f.w * 1.15, f.t * 2.6); wb.position.set(f.x + 0.12, 0.011, f.z - 0.1); wallBlobs.push(wb)
+      walls.push({ id: f.id, f, list, shake: 0, wb })
     }
     syncWalls(forts, true)
   }
@@ -189,6 +193,7 @@ export function createView(canvas, o = {}) {
         n++
       }
       w.shake = Math.max(0, w.shake - 0.12)
+      if (w.wb) w.wb.visible = w.list.some(b => b.alive)
     }
     bricks.count = n; bricks.instanceMatrix.needsUpdate = true
   }

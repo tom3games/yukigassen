@@ -9,3 +9,4 @@
 - 検査 verify.mjs 47項目 全通過（Chromium・WebKit・3サイズ・PC・Xの中）。tom3games/yukigassen に公開、Pages built、live.mjs で Chromium/WebKit とも結果まで通過・og.png 200・GitHub に個人名なし
 - 読み込み: 10Mbps 0.8〜1.4秒、3Mbps+CPU4倍遅 2.7秒（準備完了まで 0.8MB）
 - 横丁: 6か所に登録、組み立て OK（5987ファイル）、検査中
+- iOS シミュレーターの Safari で影の地図が地面ごと暗くなった → スマホは影の地図を切り丸い影に（v2）
