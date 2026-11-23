@@ -6,3 +6,6 @@
 - 絵ができた（art/raw の7枚 → art/key.py で img/dino.webp・props.webp・bg.webp）。恐竜の色は js/tint.js で水色だけ回す
 - 中身 js/sim.js（元の遊びを m 単位に移植）・人の速さの bot js/bot.js・tools/sim.mjs で勝率: 2v2 やさしい80% ふつう53% つよい28%（80試合）。元の版で起きていた「壁の裏に隠れると終わらない」を直した（AI が壁の端へ回る・2秒で壁を崩しにかかる）
 - 3D: js/view.js（雪原・川の流れ・雪レンガの壁が当たるたびに崩れる・雪玉・雪しぶき・足跡・息・降る雪・タイトルは低いカメラで山と空）。dist/game.js を esbuild で1本に（590KB）
+- 検査 verify.mjs 47項目 全通過（Chromium・WebKit・3サイズ・PC・Xの中）。tom3games/yukigassen に公開、Pages built、live.mjs で Chromium/WebKit とも結果まで通過・og.png 200・GitHub に個人名なし
+- 読み込み: 10Mbps 0.8〜1.4秒、3Mbps+CPU4倍遅 2.7秒（準備完了まで 0.8MB）
+- 横丁: 6か所に登録、組み立て OK（5987ファイル）、検査中

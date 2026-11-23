@@ -23,7 +23,7 @@ for (const [name, bt, opts] of [['chromium', chromium, {}], ['webkit', webkit, {
   await p.waitForFunction(() => yk.mode === 'result', null, { timeout: 8000 }); await p.waitForTimeout(800)
   out.push(`${name}: result wins=${await p.evaluate(() => yk.S.wins.join('-'))} muteOk=${await p.evaluate(() => window.__muteOk ? window.__muteOk() : 'n/a')}`)
   await p.screenshot({ path: `shots/live-${name}.png` })
-  const og = await p.evaluate(async () => { const r = await fetch(document.querySelector('meta[property="og:image"]').content); return r.status + ' ' + r.headers.get('content-type') })
+  const og = await p.evaluate(async () => { const r = await fetch(new URL('og.png', location.href)); return r.status + ' ' + r.headers.get('content-type') })
   out.push(`${name}: og=${og} errors=${errs.length ? errs.join(' | ') : 'none'}`)
   await b.close()
 }
